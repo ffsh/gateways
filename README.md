@@ -780,15 +780,42 @@ zone "ffshev.de" {
 
 </pre>
 
-Nun die <code>db.net.freifunk.stormarn</code> Datei mit Inhalt füllen:
-Dazu https://github.com/ffod/bind TODO
+Die zugehörigen Zone Dateien werden in einem [Repository](https://github.com/ffsh/bind) verwaltet.
 
-Achtung, je nach Einstellungen bitte auch die resolv.conf beachten, damit später auch DNS funktioniert!!!
+Diese sollen automatisch aktuallisert werden.
 
-Mit den Dateien kann <code>bind9</code> als root über die Konsole gestartet werden:
+Als erstes legen wir einen neuen Benutzer an.
+```
+useradd -m -s /bin/bash dnsbind
+```
+
+Dann wechseln wir zu diesem Nutzer.
+
+```
+su - dnsbind
+cd /home/dnsbind/
+```
+
+Und Klonen das Repository
+```
+git clone https://github.com/ffod/bind.git
+```
+
+Danach verlassen wir den Nutzer.
+```
+exit
+```
+Und legen einige Cron jobs an.
+
+```
+*/15 * * * * root /home/dnsbind/bind/updatestofrei.sh > /dev/null 2>&1
+*/15 * * * * root /home/dnsbind/bind/updatelauen.sh > /dev/null 2>&1
+*/15 * * * * root /home/dnsbind/bind/updateffsh.sh > /dev/null 2>&1
+```
+Zum Schluss starten wir bind neu.
 
 <pre>
-service bind9 restart
+systemctl restart bind9
 </pre>
 
 ### Mesh Announce
@@ -884,19 +911,22 @@ Dann wird yanic installiert.
 go get -v -u github.com/FreifunkBremen/yanic
 </pre>
 
-Die Konfiguration von Yanic wird in <code>/etc/yanic.conf</code> angelegt
+Die Konfiguration von Yanic wird in <code>/etc/yanic.conf</code> angelegt.
+Eine Beispiel gibt es [hier](https://raw.githubusercontent.com/ffsh/ffshConfigs/master/yanic.conf):
 
-<pre>
-https://raw.githubusercontent.com/ffsh/ffshConfigs/master/yanic.conf
-</pre>
 
 Wir können testen ob yanic funktioniert in dem wir eine manuelle Anfrage stellen hier an das Gateway Hopfenbach:
-
-TODO Service anlegen
 
 <pre>
 yanic query --wait 5 bat0 "fddf:0bf7:80::128:1"
 </pre>
+
+Damit yanic auch als Deamon läuft legen wir noch einen service an.
+
+```
+sudo cp /opt/go/src/github.com/FreifunkBremen/yanic/contrib/init/linux-systemd/yanic.service /lib/systemd/system/yanic.service
+sudo systemctl daemon-reload
+```
 
 #### influxdb
 Influxdb dient als Datenbank für yanic
