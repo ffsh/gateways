@@ -609,7 +609,8 @@ service cron restart
 apt install radvd isc-dhcp-server
 </pre>
 
-==== DHCP radvd IPv6 ====
+#### DHCP radvd IPv6
+
 Es wird für IPv6 die Konfigurationsdatei <code>/etc/radvd.conf</code> mit folgenden Zeilen benötigt:
 <pre>
 interface br-ffod {
