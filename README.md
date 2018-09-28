@@ -664,8 +664,23 @@ include "/etc/dhcp/static.conf";
 
 Bitte eine leere Datei <code>/etc/dhcp/static.conf</code> erzeugen.
 
-TODO:
-Anleitung unter: https://github.com/ffod/dhcp-static.
+```
+useradd -m -s /bin/bash dhcpstatic
+
+cd /home/dhcpstatic
+
+su dhcpstatic
+
+git clone https://github.com/ffsh/dhcp-static.git
+
+chmod +x dhcp-static/updateStatics.sh
+
+exit
+
+/home/dhcpstatic/dhcp-static/updateStatics.sh
+
+*/5 * * * * root /home/dhcpstatic/dhcp-static/updateStatics.sh > /dev/null 2>&1
+```
 
 
 Auf dem DHCP-Server muss noch das Bridge-Interface für IPv4 festgelegt werden. Bitte die Datei <code>/etc/default/isc-dhcp-server</code> mit folgender Option ergänzen:
