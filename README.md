@@ -5,19 +5,19 @@ Network IPv6:   fddf:0bf7:80::/48
 
 <table>
   <tr>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Name</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">ULA</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">IPv6</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">RFC1918</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">DHCP</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">ICVPN-Transit</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Mesh MAC(s)</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">B.A.T.M.A.N.-adv. MAC(s)</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Dienste</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Standort</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Betreuer</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Internet-Gateway</th>
-    <th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren">Status</th>
+    <th>Name</th>
+    <th>ULA</th>
+    <th>IPv6</th>
+    <th>RFC1918</th>
+    <th>DHCP</th>
+    <th>ICVPN-Transit</th>
+    <th>Mesh MAC(s)</th>
+    <th>B.A.T.M.A.N.-adv. MAC(s)</th>
+    <th>Dienste</th>
+    <th>Standort</th>
+    <th>Betreuer</th>
+    <th>Exit/VPN-Dienst</th>
+    <th>Status</th>
   </tr>
   <tr>
     <td>Barnitz<br></td>
@@ -32,7 +32,7 @@ Network IPv6:   fddf:0bf7:80::/48
     <td>Hetzner (Nbg)</td>
     <td>ul</td>
     <td>Mullvad 3</td>
-    <td><span style="color:green">online</span></td>
+    <td>online</td>
   </tr>
   <tr>
     <td>Beste</td>
@@ -47,7 +47,7 @@ Network IPv6:   fddf:0bf7:80::/48
     <td>Hetzner (Fsn)</td>
     <td>ul</td>
     <td>Mullvad 3</td>
-    <td><span style="color:green">online</span></td>
+    <td>online</td>
   </tr>
   <tr>
     <td>Bille</td>
@@ -103,11 +103,11 @@ Network IPv6:   fddf:0bf7:80::/48
     <td>n/a</td>
     <td>00:5b:27:80:01:28</td>
     <td>00:5b:27:81:01:28</td>
-    <td>Karte, FFRZ Seite</td>
+    <td>FFSH Karte, FFSH Frimware mirror</td>
     <td>Hetzner</td>
     <td>swo</td>
     <td>PrivateInternetAccess</td>
-    <td><span style="color:green">online</span></td>
+    <td>online</td>
   </tr>
   <tr>
     <td>Krummbach</td>
@@ -118,11 +118,11 @@ Network IPv6:   fddf:0bf7:80::/48
     <td>n/a</td>
     <td>00:5b:27:80:01:44</td>
     <td>00:5b:27:81:01:44</td>
-    <td>Firmware</td>
+    <td>FFSH Frimware mirror</td>
     <td>Hetzner(fsn)</td>
     <td>ks</td>
     <td>direkt</td>
-    <td><span style="color:green">online</span></td>
+    <td>online</td>
   </tr>
   <tr>
     <td>Piepenbek</td>
@@ -182,7 +182,7 @@ Network IPv6:   fddf:0bf7:80::/48
     <td>Hetzner (Fsn)</td>
     <td>ul</td>
     <td>Mullvad 3<br></td>
-    <td><span style="color:green">online</span></td>
+    <td>online</td>
   </tr>
   <tr>
     <td>Viehbach</td>
@@ -194,17 +194,18 @@ Network IPv6:   fddf:0bf7:80::/48
     <td>00:5b:27:80:02:24</td>
     <td>00:5b:27:81:02:24</td>
     <td></td>
-    <td>Hetzner(fsn) </td>
+    <td>Hetzner(fsn)</td>
     <td>ks</td>
     <td>Mullvad 1 / direkt</td>
-    <td><span style="color:red">offline</span></td>
+    <td>offline</td>
   </tr>
 </table>
 
 # Installation
 
 ## Allgemeine Software Pakete
-Debian 9 aka stretch empfohlen
+
+Diese Anletugn ist auf Debian 9 ausgerichtet
 
 <pre>
 sudo apt install build-essential git apt-transport-https bridge-utils ntp net-tools
