@@ -1,3 +1,36 @@
+Table of Contents
+=================
+
+   * [Infrastruktur](#infrastruktur)
+   * [Installation](#installation)
+      * [Allgemeine Software Pakete](#allgemeine-software-pakete)
+         * [Batman und Fastd](#batman-und-fastd)
+            * [Batman Kernel Modul und batctl](#batman-kernel-modul-und-batctl)
+            * [fastd](#fastd)
+         * [fastd-Konfiguration](#fastd-konfiguration)
+         * [Netzwerk Konfiguration](#netzwerk-konfiguration)
+            * [IP Forwarding](#ip-forwarding)
+            * [Interfaces Konfigurieren](#interfaces-konfigurieren)
+            * [IP Tables](#ip-tables)
+         * [VPN](#vpn)
+            * [VPN-Connect regelmäßig überprüfen](#vpn-connect-regelmäßig-überprüfen)
+         * [DHCP](#dhcp)
+            * [DHCP isc-dhcp-server IPv4 und IPv6](#dhcp-isc-dhcp-server-ipv4-und-ipv6)
+         * [DNS-Server (BIND)](#dns-server-bind)
+         * [Mesh Announce](#mesh-announce)
+      * [Optional](#optional)
+         * [Karte](#karte)
+            * [yanic](#yanic)
+            * [influxdb](#influxdb)
+            * [Grafana](#grafana)
+            * [meshviewer](#meshviewer)
+               * [nodejs](#nodejs)
+               * [yarn](#yarn)
+               * [meshviewer-rgb](#meshviewer-rgb)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
+
 # Infrastruktur
 
 Network IPv4:   10.144.0.0/16
