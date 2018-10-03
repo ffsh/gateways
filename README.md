@@ -260,7 +260,7 @@ Batman 2018.1 ist die letzte Version, die per Default mit B.A.T.M.A.N. IV gebaut
 Um 2018.2+ mit B.A.T.M.A.N. IV zu bauen, setze folgende Umgebungsvariable (ungetestet):
 
 ```
-CONFIG_BATMAN_ADV_BATMAN_V=y
+CONFIG_BATMAN_ADV_BATMAN_V=n
 ```
 
 <pre>
