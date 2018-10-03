@@ -251,7 +251,7 @@ Batman Advanced ist das in Südholstein verwendete Routing Verfahren. Batman Adv
 Als <b>root</b> user <code>sudo su</code>:
 
 ```
-apt install linux-headers-$(uname -r)
+apt install linux-headers-amd64
 
 apt install libnl-3-dev libnl-genl-3-dev libcap-dev pkg-config dkms
 ```
