@@ -256,6 +256,14 @@ apt install linux-headers-amd64
 apt install libnl-3-dev libnl-genl-3-dev libcap-dev pkg-config dkms
 ```
 
+Wenn es bereits ein installiertes batman-adv module gibt (selbst installiert) dann vorher entfernen.
+```
+lsmod | grep batman
+# wenn vorhanden dann
+modprobe -rf batman_adv
+```
+
+Damit Batman bei einem Kernel Update nicht verschindet oder durch die alte OS-Version ersetzt wird, richten wir das Modul mit dkms ein.
 ```
 cd /usr/src
 wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.3/batman-adv-2018.3.tar.gz
