@@ -245,7 +245,7 @@ sudo apt install build-essential git apt-transport-https bridge-utils ntp net-to
 </pre>
 
 ### Batman und Fastd
-Batman Advanced ist das in Stormarn und Lauenburg verwendete Routing Verfahren. Batman Advanced benötigt ein Kernel Modul und batclt.
+Batman Advanced ist das in Südholstein verwendete Routing Verfahren. Batman Advanced benötigt ein Kernel Modul und batclt.
 
 #### Batman Kernel Modul und batctl
 Als <b>root</b> user <code>sudo su</code>:
@@ -253,28 +253,45 @@ Als <b>root</b> user <code>sudo su</code>:
 ```
 apt install linux-headers-$(uname -r)
 
-apt install libnl-3-dev libnl-genl-3-dev libcap-dev pkg-config
+apt install libnl-3-dev libnl-genl-3-dev libcap-dev pkg-config dkms
 ```
-Batman 2018.1 ist die letzte Version, die per Default mit B.A.T.M.A.N. IV gebaut wird ab 2018.2 kommt B.A.T.M.A.N. V zum Einsatz, welches die Knoten nicht unterstützen.
-
-Um 2018.2+ mit B.A.T.M.A.N. IV zu bauen, setze folgende Umgebungsvariable (ungetestet):
 
 ```
-CONFIG_BATMAN_ADV_BATMAN_V=n
+cd /usr/src
+wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.3/batman-adv-2018.3.tar.gz
+tar xfv batman-adv-2018.3.tar.gz
+cd batman-adv-2018.3/
+nano dkms.conf
+```
+Die dkms.conf befüllen:
+
+```
+PACKAGE_NAME=batman-adv
+PACKAGE_VERSION=2018.3
+
+DEST_MODULE_LOCATION=/extra
+BUILT_MODULE_NAME=batman-adv
+BUILT_MODULE_LOCATION=net/batman-adv
+
+MAKE="'make' CONFIG_BATMAN_ADV_BATMAN_V=n"
+CLEAN="'make' clean"
+
+AUTOINSTALL="yes"
+
+```
+
+danach
+
+```
+dkms add -m batman-adv -v 2018.3
+dkms build -m batman-adv -v 2018.3
+dkms install -m batman-adv -v 2018.3
 ```
 
 <pre>
-wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.1/batman-adv-2018.1.tar.gz
-tar xfv batman-adv-2018.1.tar.gz
-cd batman-adv-2018.1/
-make
-make install
-</pre>
-
-<pre>
-wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.1/batctl-2018.1.tar.gz
-tar xvf batctl-2018.1.tar.gz
-cd batctl-2018.1/
+wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.3/batctl-2018.3.tar.gz
+tar xvf batctl-2018.3.tar.gz
+cd batctl-2018.3/
 make
 make install
 </pre>
