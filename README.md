@@ -252,20 +252,29 @@ Als <b>root</b> user <code>sudo su</code>:
 
 ```
 apt install linux-headers-$(uname -r)
-```
-<pre>
+
 apt install libnl-3-dev libnl-genl-3-dev libcap-dev pkg-config
-wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.0/batman-adv-2018.0.tar.gz
-tar xfv batman-adv-2018.0.tar.gz
-cd batman-adv-2018.0/
+```
+Batman 2018.1 ist die letzte Version, die per Default mit B.A.T.M.A.N. IV gebaut wird ab 2018.2 kommt B.A.T.M.A.N. V zum Einsatz, welches die Knoten nicht unterstützen.
+
+Um 2018.2+ mit B.A.T.M.A.N. IV zu bauen, setze folgende Umgebungsvariable (ungetestet):
+
+```
+CONFIG_BATMAN_ADV_BATMAN_V=y
+```
+
+<pre>
+wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.1/batman-adv-2018.1.tar.gz
+tar xfv batman-adv-2018.1.tar.gz
+cd batman-adv-2018.1/
 make
 make install
 </pre>
 
 <pre>
-wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.0/batctl-2018.0.tar.gz
-tar xvf batctl-2018.0.tar.gz
-cd batctl-2018.0/
+wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.1/batctl-2018.1.tar.gz
+tar xvf batctl-2018.1.tar.gz
+cd batctl-2018.1/
 make
 make install
 </pre>
