@@ -249,6 +249,10 @@ Batman Advanced ist das in Stormarn und Lauenburg verwendete Routing Verfahren. 
 
 #### Batman Kernel Modul und batctl
 Als <b>root</b> user <code>sudo su</code>:
+
+```
+apt install linux-headers-$(uname -r)
+```
 <pre>
 apt install libnl-3-dev libnl-genl-3-dev libcap-dev pkg-config
 wget https://downloads.open-mesh.org/batman/releases/batman-adv-2018.0/batman-adv-2018.0.tar.gz
