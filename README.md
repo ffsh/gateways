@@ -304,11 +304,6 @@ make
 make install
 </pre>
 
-In <code>/etc/modules</code> folgenden Eintrag ergänzen.
-<pre>
-batman-adv
-</pre>
-
 #### fastd
 fastd v18 ist in Debian 9 bereits in den Repositorys enthalten. Unter Debian 8 findet man es in den jessie-backports.
 
